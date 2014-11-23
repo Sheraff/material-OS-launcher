@@ -11,18 +11,19 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+body, .text{
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	letter-spacing: 0.075em;
+	font-family: Roboto;
+}
 body {
 	height: 100%;
 	width: 100%;
 	font-size: 15px;
-	font-weight: 100;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: subpixel-antialiased;
-	letter-spacing: 0.075em;
+	color: #000000;
 	background: url(images/quartz_wallpaper.png);
 	background-size: cover;
-	color: #000000;
-	font-family: Roboto;
 }
 *{
 	transition: .5s all ease-in-out;
@@ -40,6 +41,7 @@ menu{
 }
 li{
 	position: relative;
+	z-index: 1;
 	height: 100%;
 	line-height: 3em;
 
@@ -67,6 +69,22 @@ img, svg{
 	fill: #FFFFFF;
 }
 
+menu #input{
+	z-index: 1;
+	color: black;
+	position: absolute;
+	left: 3em;
+	font-size: 1.5em;
+ 	line-height: 2em;
+ 	outline: none;
+ 	border: none;
+ 	background-color: transparent;
+}
+#input::selection {
+	background: black;
+	color: white;
+}
+
 .window{
 	position: fixed;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
@@ -90,10 +108,19 @@ img, svg{
 menu[data-launcher="true"]{
 	background-color: white;
 }
+#logo:not([data-launcher="true"])  svg circle{
+	-webkit-transform: scale(1);
+}
 #logo[data-launcher="true"] svg circle{
 	-webkit-transform: scale(100);
 }
 li:not(:first-child)[data-launcher="true"]{
 	-webkit-transform: translateX(100%);
 	opacity: 0;
+}
+
+#input:not([data-launcher="true"]){
+	-webkit-transform: translateX(-100%);
+	opacity: 0;
+	z-index: 0;
 }
