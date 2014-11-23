@@ -24,6 +24,9 @@ body {
 	color: #000000;
 	font-family: Roboto;
 }
+*{
+	transition: .5s all ease-in-out;
+}
 menu{
 	position: absolute;
 	top: 0;
@@ -33,6 +36,7 @@ menu{
 	list-style: none;
 	color: white;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+	overflow: hidden;
 }
 li{
 	position: relative;
@@ -56,8 +60,10 @@ img, svg{
 	position: relative;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
+	overflow: visible;
 }
 #logo svg circle{
+	-webkit-transform-origin: 50% 50%;
 	fill: #FFFFFF;
 }
 
@@ -81,6 +87,13 @@ img, svg{
 	background-color: DarkOrange;
 
 }
-.launcher menu{
+menu[data-launcher="true"]{
 	background-color: white;
+}
+#logo[data-launcher="true"] svg circle{
+	-webkit-transform: scale(100);
+}
+li:not(:first-child)[data-launcher="true"]{
+	-webkit-transform: translateX(100%);
+	opacity: 0;
 }
