@@ -64,6 +64,9 @@ img, svg{
 	-webkit-transform: translateY(-50%);
 	overflow: visible;
 }
+#logo{
+	cursor: pointer;
+}
 #logo svg circle{
 	-webkit-transform-origin: 50% 50%;
 	fill: #FFFFFF;
@@ -123,4 +126,31 @@ li:not(:first-child)[data-launcher="true"]{
 	-webkit-transform: translateX(-100%);
 	opacity: 0;
 	z-index: 0;
+}
+
+div.instruction{
+	position: absolute;
+	top: 4em;
+	left: .5em;
+	background-color: white;
+	padding: 1em;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+}
+div.instruction:after {
+	bottom: 100%;
+	left: 1em;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(1, 1, 1, 0);
+	border-bottom-color: white;
+	border-width: .5em;
+	margin-left: -.5em;
+}
+div.instruction[data-launcher="true"]{
+	-webkit-transform: translateY(25%);
+	opacity: 0;
 }
