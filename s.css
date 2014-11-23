@@ -51,6 +51,9 @@ li{
 li.left:first-child{
 	margin-right: 1em;
 }
+li.label{
+	margin-right: .5em;
+}
 .left{
 	float: left;
 }
@@ -95,18 +98,25 @@ menu #input{
 
 	top: 300px;
 	left: 300px;
-	height: 300px;
-	width: 500px;
-
 }
-.window::after{
+.window::before{
 	content: attr(data-title);
 	display: block;
 	color: white;
 	padding: .5em;
 	width: 100%;
 	background-color: DarkOrange;
-
+}
+.window[data-title="Music"]{
+	height: 300px;
+	width: 500px;
+}
+.window[data-title="Github"]{
+	top: 150px;
+	left: 600px;
+}
+.window[data-title="Github"]::before{
+	background-color: #4183c4;
 }
 menu[data-launcher="true"]{
 	background-color: white;

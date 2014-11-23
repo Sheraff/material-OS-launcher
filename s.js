@@ -17,7 +17,7 @@ logo.addEventListener('click', function(event) {
             if (targets[j].propagation_timeout) clearTimeout(targets[j].propagation_timeout);
             var targetBoundingRect = targets[j].getBoundingClientRect();
             var delay = Math.sqrt(Math.pow(event.pageX - (event.pageX > targetBoundingRect.right ? targetBoundingRect.right : (event.pageX < targetBoundingRect.left ? targetBoundingRect.left : event.pageX)), 2) + Math.pow(event.pageY - (event.pageY > targetBoundingRect.bottom ? targetBoundingRect.bottom : (event.pageY < targetBoundingRect.top ? targetBoundingRect.top : event.pageY)), 2))
-            targets[j].propagation_timeout = window.setTimeout(targets[j].propagation_target.bind(undefined, this), 250 * delay / window.innerWidth);
+            targets[j].propagation_timeout = window.setTimeout(targets[j].propagation_target.bind(undefined, this), 1000 * delay / window.innerWidth);
         }
     };
     event.stopPropagation();
