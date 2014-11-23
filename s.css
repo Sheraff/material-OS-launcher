@@ -51,11 +51,14 @@ li.left:first-child{
 .right{
 	float: right;
 }
-img{
+img, svg{
 	height: 80%;
 	position: relative;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
+}
+#logo svg circle{
+	fill: #FFFFFF;
 }
 
 .window{
