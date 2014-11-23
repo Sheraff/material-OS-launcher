@@ -11,18 +11,22 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+body, .text{
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	letter-spacing: 0.075em;
+	font-family: Roboto;
+}
 body {
 	height: 100%;
 	width: 100%;
 	font-size: 15px;
-	font-weight: 100;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: subpixel-antialiased;
-	letter-spacing: 0.075em;
+	color: #000000;
 	background: url(images/quartz_wallpaper.png);
 	background-size: cover;
-	color: #000000;
-	font-family: Roboto;
+}
+*{
+	transition: .5s all ease-in-out;
 }
 menu{
 	position: absolute;
@@ -33,9 +37,11 @@ menu{
 	list-style: none;
 	color: white;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+	overflow: hidden;
 }
 li{
 	position: relative;
+	z-index: 1;
 	height: 100%;
 	line-height: 3em;
 
@@ -45,17 +51,44 @@ li{
 li.left:first-child{
 	margin-right: 1em;
 }
+li.label{
+	margin-right: .5em;
+}
 .left{
 	float: left;
 }
 .right{
 	float: right;
 }
-img{
+img, svg{
 	height: 80%;
 	position: relative;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
+	overflow: visible;
+}
+#logo{
+	cursor: pointer;
+}
+#logo svg circle{
+	-webkit-transform-origin: 50% 50%;
+	fill: #FFFFFF;
+}
+
+menu #input{
+	z-index: 1;
+	color: black;
+	position: absolute;
+	left: 3em;
+	font-size: 1.5em;
+ 	line-height: 2em;
+ 	outline: none;
+ 	border: none;
+ 	background-color: transparent;
+}
+#input::selection {
+	background: black;
+	color: white;
 }
 
 .window{
@@ -65,19 +98,69 @@ img{
 
 	top: 300px;
 	left: 300px;
-	height: 300px;
-	width: 500px;
-
 }
-.window::after{
+.window::before{
 	content: attr(data-title);
 	display: block;
 	color: white;
 	padding: .5em;
 	width: 100%;
 	background-color: DarkOrange;
-
 }
-.launcher menu{
+.window[data-title="Music"]{
+	height: 300px;
+	width: 500px;
+}
+.window[data-title="Github"]{
+	top: 150px;
+	left: 600px;
+}
+.window[data-title="Github"]::before{
+	background-color: #4183c4;
+}
+menu[data-launcher="true"]{
 	background-color: white;
+}
+#logo:not([data-launcher="true"])  svg circle{
+	-webkit-transform: scale(1);
+}
+#logo[data-launcher="true"] svg circle{
+	-webkit-transform: scale(100);
+}
+li:not(:first-child)[data-launcher="true"]{
+	-webkit-transform: translateX(100%);
+	opacity: 0;
+}
+
+#input:not([data-launcher="true"]){
+	-webkit-transform: translateX(-100%);
+	opacity: 0;
+	z-index: 0;
+}
+
+div.instruction{
+	position: absolute;
+	top: 4em;
+	left: .5em;
+	background-color: white;
+	padding: 1em;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+}
+div.instruction:after {
+	bottom: 100%;
+	left: 1em;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(1, 1, 1, 0);
+	border-bottom-color: white;
+	border-width: .5em;
+	margin-left: -.5em;
+}
+div.instruction[data-launcher="true"]{
+	-webkit-transform: translateY(25%);
+	opacity: 0;
 }
